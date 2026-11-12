@@ -4,18 +4,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Shreyas Rasam | AWS Cloud & DevOps Engineer</title>
 
-<meta name="description" content="Shreyas Rasam - AWS Cloud, DevOps and Security Engineer. Explore cloud architecture, AWS security, Terraform, CI/CD and DevOps projects.">
+<meta name="description" content="Shreyas Rasam - AWS Cloud and Security Engineer specializing in cloud architecture, DevOps, Terraform, CI/CD and AWS security.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --bg: #080d18;
   --card: #111a2b;
-  --card2: #151f32;
+  --card2: #17243a;
   --text: #f1f5ff;
   --muted: #9baac2;
   --blue: #38bdf8;
@@ -37,9 +39,17 @@ body {
   line-height: 1.7;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+button {
+  font-family: inherit;
 }
 
 .container {
@@ -49,7 +59,7 @@ a {
 }
 
 section {
-  padding: 95px 0;
+  padding: 90px 0;
 }
 
 .section-title {
@@ -79,7 +89,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(8,13,24,.94);
+  background: rgba(8,13,24,.95);
   backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--border);
 }
@@ -93,7 +103,7 @@ nav {
 
 .logo {
   font-family: 'Space Grotesk';
-  font-size: 23px;
+  font-size: 24px;
   font-weight: 700;
 }
 
@@ -103,7 +113,7 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 25px;
+  gap: 23px;
   list-style: none;
 }
 
@@ -129,11 +139,11 @@ nav {
 /* HERO */
 
 .hero {
-  min-height: 620px;
+  min-height: 640px;
   display: flex;
   align-items: center;
   background:
-    radial-gradient(circle at 80% 30%, rgba(56,189,248,.12), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(56,189,248,.13), transparent 30%),
     radial-gradient(circle at 10% 80%, rgba(167,139,250,.10), transparent 30%);
 }
 
@@ -257,6 +267,7 @@ nav {
 
 .stat p {
   font-size: 12px;
+  color: var(--muted);
 }
 
 /* SKILLS */
@@ -476,6 +487,70 @@ footer {
   font-size: 13px;
 }
 
+/* IMAGE LIGHTBOX */
+
+.project-card img,
+.cert-card img,
+.profile-wrap img {
+  cursor: zoom-in;
+}
+
+.image-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0,0,0,.96);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 55px 20px;
+}
+
+.image-lightbox.active {
+  display: flex;
+  animation: lightboxFade .25s ease;
+}
+
+.image-lightbox img {
+  max-width: 95%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(56,189,248,.15);
+  cursor: default;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  color: white;
+  font-size: 45px;
+  font-weight: 300;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.lightbox-close:hover {
+  color: var(--blue);
+}
+
+.lightbox-caption {
+  color: white;
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+@keyframes lightboxFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* RESPONSIVE */
 
 @media(max-width:850px) {
@@ -541,14 +616,31 @@ footer {
   .stats {
     grid-template-columns: repeat(2,1fr);
   }
+
+  .image-lightbox {
+    padding: 55px 10px;
+  }
+
+  .image-lightbox img {
+    max-width: 100%;
+    max-height: 78vh;
+  }
+
+  .lightbox-close {
+    top: 8px;
+    right: 18px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+
 <header>
 <nav class="container">
+
   <a href="#home" class="logo">SHREYAS<span>.</span></a>
 
   <ul class="nav-links" id="navLinks">
@@ -558,10 +650,14 @@ footer {
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 
-  <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+  <button class="menu-btn" id="menuBtn"
+          aria-label="Toggle navigation"
+          aria-expanded="false">☰</button>
+
 </nav>
 </header>
 
@@ -585,13 +681,18 @@ footer {
 
     <div class="hero-buttons">
       <a href="#projects" class="btn btn-primary">Explore My Projects</a>
+
       <a href="assets/Shreyas_Rasam_Cloud_DevOps_Resume.pdf"
-         class="btn btn-outline" download>Download Resume ↓</a>
+         class="btn btn-outline" download>
+         Download Resume ↓
+      </a>
     </div>
   </div>
 
   <div class="profile-wrap">
-    <img src="assets/profile.png" alt="Shreyas Rasam">
+    <img src="assets/profile.png"
+         alt="Shreyas Rasam profile picture"
+         class="zoomable-image">
   </div>
 
 </div>
@@ -612,15 +713,20 @@ footer {
     <div class="panel">
       <h3>Cloud Infrastructure & Security Specialist</h3>
       <br>
+
       <p>
         Results-driven AWS Cloud & Security Engineer with 3+ years
         of enterprise experience in cloud infrastructure design,
         site reliability and automated governance.
+
         <br><br>
+
         Experienced in multi-tier deployments using Terraform,
         Docker and CI/CD pipelines, implementing Zero Trust
         architectures, least-privilege IAM and AWS KMS encryption.
+
         <br><br>
+
         Strong background in FinOps optimization, Agile coordination,
         incident management and enterprise infrastructure operations.
         Focused on maintaining 99.9% uptime SLA compliance and
@@ -629,24 +735,28 @@ footer {
     </div>
 
     <div class="stats">
+
       <div class="stat">
         <h3>3+</h3>
         <p>Years Experience</p>
       </div>
+
       <div class="stat">
         <h3>10</h3>
         <p>Cloud Projects</p>
       </div>
+
       <div class="stat">
         <h3>99.9%</h3>
         <p>Uptime SLA</p>
       </div>
+
       <div class="stat">
         <h3>35%</h3>
         <p>MTTR Reduction</p>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
 </section>
@@ -704,137 +814,228 @@ footer {
 
   <div class="section-title">
     <h2>Featured <span class="gradient">Projects</span></h2>
-    <p>10 hands-on AWS Cloud, Security and DevOps projects</p>
+    <p>10 AWS Cloud, Security and DevOps projects</p>
   </div>
 
   <div class="projects-grid">
 
     <article class="project-card">
       <img src="assets/AWS Data Encryption & Key Management.jpg"
-           alt="AWS Data Encryption and Key Management" loading="lazy">
+           alt="AWS Data Encryption & Key Management"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 01</span>
         <h3>AWS Data Encryption & Key Management</h3>
-        <p>Designed a secure data encryption and key management solution using AWS KMS, customer-managed keys and controlled access policies to protect sensitive cloud data.</p>
+
+        <p>
+          Designed a secure data encryption and key management solution
+          using AWS KMS, customer-managed keys and controlled access
+          policies to protect sensitive cloud data.
+        </p>
+
         <div class="tags">
-          <span>AWS KMS</span><span>S3</span><span>IAM</span><span>Encryption</span>
+          <span>AWS KMS</span><span>S3</span>
+          <span>IAM</span><span>Encryption</span>
         </div>
       </div>
     </article>
 
     <article class="project-card">
       <img src="assets/Enterprise AWS Cloud Architecture.jpg"
-           alt="Enterprise AWS Cloud Architecture" loading="lazy">
+           alt="Enterprise AWS Cloud Architecture"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 02</span>
         <h3>Enterprise AWS Cloud Architecture</h3>
-        <p>Designed a multi-tier, highly available AWS architecture with isolated subnets, scalable compute resources, load balancing and secure traffic routing.</p>
+
+        <p>
+          Designed multi-tier, highly available AWS architecture
+          with isolated subnets, scalable compute resources,
+          load balancing and secure traffic routing.
+        </p>
+
         <div class="tags">
-          <span>Terraform</span><span>VPC</span><span>EC2</span><span>ALB</span><span>ECS</span>
+          <span>Terraform</span><span>VPC</span>
+          <span>EC2</span><span>ALB</span><span>ECS</span>
         </div>
       </div>
     </article>
 
     <article class="project-card">
       <img src="assets/AWS Security Monitoring & Threat Detection.jpg"
-           alt="AWS Security Monitoring" loading="lazy">
+           alt="AWS Security Monitoring & Threat Detection"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 03</span>
         <h3>AWS Security Monitoring & Threat Detection</h3>
-        <p>Implemented centralized cloud security monitoring, audit logging, threat detection and operational alerting for suspicious AWS activities.</p>
+
+        <p>
+          Implemented centralized cloud security monitoring,
+          audit logging, threat detection and operational
+          alerting for suspicious AWS activities.
+        </p>
+
         <div class="tags">
-          <span>CloudTrail</span><span>CloudWatch</span><span>GuardDuty</span><span>SNS</span>
+          <span>CloudTrail</span><span>CloudWatch</span>
+          <span>GuardDuty</span><span>SNS</span>
         </div>
       </div>
     </article>
 
     <article class="project-card">
       <img src="assets/IAM Least-Privilege Security Lab.jpg"
-           alt="IAM Least Privilege Security Lab" loading="lazy">
+           alt="IAM Least-Privilege Security Lab"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 04</span>
         <h3>IAM Least-Privilege Security Lab</h3>
-        <p>Implemented role-based access management, IAM policies and least-privilege permissions to minimize unnecessary access across AWS resources.</p>
+
+        <p>
+          Implemented role-based access management, IAM policies
+          and least-privilege permissions to minimize unnecessary
+          access across AWS resources.
+        </p>
+
         <div class="tags">
-          <span>AWS IAM</span><span>RBAC</span><span>Policies</span><span>Security</span>
+          <span>AWS IAM</span><span>RBAC</span>
+          <span>Policies</span><span>Security</span>
         </div>
       </div>
     </article>
 
     <article class="project-card">
       <img src="assets/AWS Backup & Disaster Recovery.jpg"
-           alt="AWS Backup and Disaster Recovery" loading="lazy">
+           alt="AWS Backup & Disaster Recovery"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 05</span>
         <h3>AWS Backup & Disaster Recovery</h3>
-        <p>Developed a cloud backup and recovery strategy for business continuity, including scheduled backups, recovery planning and infrastructure resilience.</p>
+
+        <p>
+          Developed cloud backup and recovery strategies
+          for business continuity, including scheduled backups,
+          recovery planning and infrastructure resilience.
+        </p>
+
         <div class="tags">
-          <span>AWS Backup</span><span>S3</span><span>RDS</span><span>EBS</span>
+          <span>AWS Backup</span><span>S3</span>
+          <span>RDS</span><span>EBS</span>
         </div>
       </div>
     </article>
 
     <article class="project-card">
       <img src="assets/Automated CI-CD Pipeline.jpg"
-           alt="Automated CI CD Pipeline" loading="lazy">
+           alt="Automated CI-CD Pipeline"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 06</span>
         <h3>Automated CI/CD Pipeline</h3>
-        <p>Engineered an automated continuous integration and delivery workflow with source control integration, Docker builds, testing and deployment automation.</p>
+
+        <p>
+          Engineered an automated continuous integration
+          and delivery workflow with source control integration,
+          Docker builds, testing and deployment automation.
+        </p>
+
         <div class="tags">
-          <span>Jenkins</span><span>Docker</span><span>GitHub</span><span>Terraform</span>
+          <span>Jenkins</span><span>Docker</span>
+          <span>GitHub</span><span>Terraform</span>
         </div>
       </div>
     </article>
 
     <article class="project-card">
       <img src="assets/Secure AWS Network Architecture.jpg"
-           alt="Secure AWS Network Architecture" loading="lazy">
+           alt="Secure AWS Network Architecture"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 07</span>
         <h3>Secure AWS Network Architecture</h3>
-        <p>Designed a segmented cloud network using public and private subnets, controlled network access, routing and security group configurations.</p>
+
+        <p>
+          Designed segmented cloud networks using public and
+          private subnets, controlled network access, routing
+          and security group configurations.
+        </p>
+
         <div class="tags">
-          <span>AWS VPC</span><span>Subnets</span><span>NAT Gateway</span><span>Security Groups</span>
+          <span>VPC</span><span>Subnets</span>
+          <span>NAT Gateway</span><span>Security Groups</span>
         </div>
       </div>
     </article>
 
     <article class="project-card">
       <img src="assets/AWS Compliance & Security Audit.jpg"
-           alt="AWS Compliance and Security Audit" loading="lazy">
+           alt="AWS Compliance & Security Audit"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 08</span>
         <h3>AWS Compliance & Security Audit</h3>
-        <p>Focused on cloud governance, access reviews, audit logging and security posture assessment aligned with enterprise compliance practices.</p>
+
+        <p>
+          Focused on cloud governance, access reviews,
+          audit logging and security posture assessment
+          aligned with enterprise compliance practices.
+        </p>
+
         <div class="tags">
-          <span>CloudTrail</span><span>IAM</span><span>CIS</span><span>Governance</span>
+          <span>CloudTrail</span><span>IAM</span>
+          <span>CIS</span><span>Governance</span>
         </div>
       </div>
     </article>
 
     <article class="project-card">
       <img src="assets/Containerized Microservices on ECS.jpg"
-           alt="Containerized Microservices on ECS" loading="lazy">
+           alt="Containerized Microservices on ECS"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 09</span>
         <h3>Containerized Microservices on ECS</h3>
-        <p>Containerized microservice APIs using Docker multi-stage builds and deployed workloads using Amazon ECS and Fargate with centralized logging.</p>
+
+        <p>
+          Containerized microservice APIs using Docker
+          multi-stage builds and deployed workloads using
+          Amazon ECS and Fargate with centralized logging.
+        </p>
+
         <div class="tags">
-          <span>Docker</span><span>ECR</span><span>ECS</span><span>Fargate</span><span>CloudWatch</span>
+          <span>Docker</span><span>ECR</span>
+          <span>ECS</span><span>Fargate</span>
+          <span>CloudWatch</span>
         </div>
       </div>
     </article>
 
     <article class="project-card">
       <img src="assets/Serverless Application Platform.jpg"
-           alt="Serverless Application Platform" loading="lazy">
+           alt="Serverless Application Platform"
+           class="zoomable-image" loading="lazy">
+
       <div class="project-info">
         <span class="project-number">PROJECT 10</span>
         <h3>Serverless Application Platform</h3>
-        <p>Designed a serverless application platform concept using event-driven cloud services to support scalable application workloads with reduced infrastructure management.</p>
+
+        <p>
+          Designed an event-driven serverless application
+          platform using managed AWS services to support
+          scalable workloads with reduced infrastructure management.
+        </p>
+
         <div class="tags">
-          <span>AWS Lambda</span><span>API Gateway</span><span>CloudWatch</span><span>IAM</span>
+          <span>Lambda</span><span>API Gateway</span>
+          <span>DynamoDB</span><span>CloudWatch</span>
         </div>
       </div>
     </article>
@@ -857,7 +1058,7 @@ footer {
 
     <div class="timeline-item">
       <h3>Technical Support Engineer</h3>
-      <h4>Orbit TechSol | Mumbai</h4>
+      <h4>Orbit TechSol | Mumbai, India</h4>
       <span class="date">November 2025 – Present</span>
 
       <ul>
@@ -872,7 +1073,7 @@ footer {
 
     <div class="timeline-item">
       <h3>Senior Associate</h3>
-      <h4>SBILife Insurance LTD | Mumbai</h4>
+      <h4>SBILife Insurance LTD | Mumbai, India</h4>
       <span class="date">June 2023 – November 2025</span>
 
       <ul>
@@ -901,12 +1102,18 @@ footer {
   <div class="cert-grid">
 
     <div class="cert-card">
-      <img src="assets/aws-cert.png" alt="AWS Certified Solutions Architect Associate" loading="lazy">
+      <img src="assets/aws-cert.png"
+           alt="AWS Certified Solutions Architect Associate"
+           class="zoomable-image" loading="lazy">
+
       <h3>AWS Certified Solutions Architect – Associate</h3>
     </div>
 
     <div class="cert-card">
-      <img src="assets/oracle-cert.png" alt="Oracle Cloud Architect Associate" loading="lazy">
+      <img src="assets/oracle-cert.png"
+           alt="Oracle Certified Cloud Architect Associate"
+           class="zoomable-image" loading="lazy">
+
       <h3>Oracle Certified Cloud Architect – Associate</h3>
     </div>
 
@@ -921,6 +1128,7 @@ footer {
 
   <div class="section-title">
     <h2><span class="gradient">Education</span></h2>
+    <p>Academic background</p>
   </div>
 
   <div class="education">
@@ -952,49 +1160,205 @@ footer {
 
   <div class="section-title">
     <h2>Let's <span class="gradient">Connect</span></h2>
-    <p>Interested in cloud engineering, DevOps and security opportunities?</p>
+    <p>Let's build something amazing together</p>
   </div>
 
   <div class="contact-box">
+
     <p>
-      I'm interested in opportunities where I can contribute
+      Interested in opportunities where I can contribute
       to building secure, scalable and reliable cloud infrastructure.
       Let's connect!
     </p>
 
     <div class="contact-links">
-      <a href="mailto:Shreyas.rasam@outlook.com" class="btn btn-primary">Email Me</a>
+
+      <a href="mailto:Shreyas.rasam@outlook.com"
+         class="btn btn-primary">Email Me</a>
 
       <a href="https://linkedin.com/in/shreyas-rasam-258213242"
-         target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn</a>
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-outline">LinkedIn</a>
 
       <a href="https://github.com/SSR139"
-         target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-outline">GitHub</a>
 
-      <a href="tel:+918108877577" class="btn btn-outline">Call Me</a>
+      <a href="tel:+918108877577"
+         class="btn btn-outline">Call Me</a>
+
     </div>
 
     <br>
     <p>📍 Mumbai, Maharashtra, India</p>
-  </div>
 
+  </div>
 </div>
 </section>
 
+<!-- FOOTER -->
+
 <footer>
-  <p>© 2026 Shreyas Rasam. Designed & Developed with passion for Cloud Technology.</p>
+  <p>© 2026 Shreyas Rasam. All Rights Reserved.</p>
+  <p>AWS Cloud | DevOps | Security Engineering</p>
 </footer>
 
+<!-- FULLSCREEN IMAGE LIGHTBOX -->
+
+<div class="image-lightbox"
+     id="imageLightbox"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Expanded image viewer"
+     aria-hidden="true">
+
+  <button class="lightbox-close"
+          id="lightboxClose"
+          aria-label="Close image viewer">
+    &times;
+  </button>
+
+  <img id="lightboxImage"
+       src=""
+       alt="Expanded image preview">
+
+  <div class="lightbox-caption"
+       id="lightboxCaption"></div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
 <script>
-function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("active");
-}
+
+// MOBILE NAVIGATION
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", function() {
+
+  const isOpen = navLinks.classList.toggle("active");
+
+  menuBtn.setAttribute("aria-expanded", isOpen);
+
+});
 
 document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    document.getElementById("navLinks").classList.remove("active");
+
+  link.addEventListener("click", function() {
+
+    navLinks.classList.remove("active");
+    menuBtn.setAttribute("aria-expanded", "false");
+
   });
+
 });
+
+
+// IMAGE LIGHTBOX
+
+const lightbox = document.getElementById("imageLightbox");
+
+const lightboxImage =
+  document.getElementById("lightboxImage");
+
+const lightboxCaption =
+  document.getElementById("lightboxCaption");
+
+const closeButton =
+  document.getElementById("lightboxClose");
+
+let previouslyFocusedElement = null;
+
+
+// All project, certificate and profile images
+
+const clickableImages = document.querySelectorAll(
+  ".project-card img, .cert-card img, .profile-wrap img"
+);
+
+
+// Open image
+
+clickableImages.forEach(image => {
+
+  image.addEventListener("click", function() {
+
+    previouslyFocusedElement = document.activeElement;
+
+    lightboxImage.src = this.src;
+
+    lightboxImage.alt = this.alt;
+
+    lightboxCaption.textContent =
+      this.alt || "Image Preview";
+
+    lightbox.classList.add("active");
+
+    lightbox.setAttribute("aria-hidden", "false");
+
+    document.body.classList.add("no-scroll");
+
+    closeButton.focus();
+
+  });
+
+});
+
+
+// Close image function
+
+function closeLightbox() {
+
+  if (!lightbox.classList.contains("active")) {
+    return;
+  }
+
+  lightbox.classList.remove("active");
+
+  lightbox.setAttribute("aria-hidden", "true");
+
+  lightboxImage.src = "";
+
+  document.body.classList.remove("no-scroll");
+
+  if (previouslyFocusedElement) {
+    previouslyFocusedElement.focus();
+  }
+
+}
+
+
+// Close using X
+
+closeButton.addEventListener("click", closeLightbox);
+
+
+// Close by clicking outside the image
+
+lightbox.addEventListener("click", function(event) {
+
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+
+});
+
+
+// Close using Escape key
+
+document.addEventListener("keydown", function(event) {
+
+  if (
+    event.key === "Escape" &&
+    lightbox.classList.contains("active")
+  ) {
+    closeLightbox();
+  }
+
+});
+
 </script>
 
 </body>
