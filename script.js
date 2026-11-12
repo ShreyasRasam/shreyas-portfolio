@@ -1,93 +1,54 @@
 
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.getElementById("navLinks");
-  const yearElement = document.getElementById("currentYear");
-  const navigationLinks = document.querySelectorAll(
-    '.nav-links a[href^="#"]'
-  );
+// Mobile navigation
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
-  // Update footer year automatically.
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+  });
 
-  // Mobile navigation.
-  if (menuToggle && navLinks) {
-    const closeMenu = () => {
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
       navLinks.classList.remove("open");
       menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Open navigation");
-    };
-
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation" : "Open navigation"
-      );
+      menuToggle.textContent = "☰";
     });
+  });
+}
 
-    navigationLinks.forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
+// Project filters
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
 
-    document.addEventListener("click", (event) => {
-      if (
-        !navLinks.contains(event.target) &&
-        !menuToggle.contains(event.target)
-      ) {
-        closeMenu();
-      }
-    });
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 780) {
-        closeMenu();
-      }
-    });
-  }
+    filterButtons.forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
 
-  // Highlight navigation based on the visible section.
-  const sections = document.querySelectorAll("main section[id]");
-
-  if ("IntersectionObserver" in window && sections.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          const activeId = entry.target.id;
-
-          navigationLinks.forEach((link) => {
-            const isActive =
-              link.getAttribute("href") === `#${activeId}`;
-
-            link.classList.toggle("active", isActive);
-
-            if (isActive) {
-              link.setAttribute("aria-current", "location");
-            } else {
-              link.removeAttribute("aria-current");
-            }
-          });
-        });
-      },
-      {
-        rootMargin: "-20% 0px -65% 0px",
-        threshold: 0
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-  }
-
-  // Report missing images in the browser console.
-  document.querySelectorAll("img").forEach((image) => {
-    image.addEventListener("error", () => {
-      console.warn("Image could not be loaded:", image.getAttribute("src"));
+    projectCards.forEach((card) => {
+      const category = card.dataset.category;
+      const shouldShow = filter === "all" || category === filter;
+      card.classList.toggle("hidden", !shouldShow);
     });
   });
 });
+
+// Dynamic footer year
+const yearElement = document.getElementById("year");
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+// Profile image fallback
+const profileImage = document.querySelector(".profile-photo");
+
+if (profileImage) {
+  profileImage.addEventListener("error", () => {
+    console.warn("Profile image not found. Check that images/profile.png exists.");
+  });
+}
