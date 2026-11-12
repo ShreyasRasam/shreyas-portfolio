@@ -1,57 +1,32 @@
-// Mobile navigation toggle
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+// Mobile Hamburger Menu
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav-menu");
 
-if (menuToggle && navLinks) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    // Swap between hamburger and close icon
-    menuToggle.textContent = isOpen ? "✕" : "☰"; 
-  });
-
-  // Close mobile menu when a link is clicked
-  navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.textContent = "☰";
-    });
-  });
-}
-
-// Project category filters
-const filterButtons = document.querySelectorAll(".filter-btn");
-const projectCards = document.querySelectorAll(".project-card");
-
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const filter = button.dataset.filter;
-
-    // Remove active state from all buttons, add to clicked button
-    filterButtons.forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-
-    // Show/hide project cards based on the selected category
-    projectCards.forEach((card) => {
-      const category = card.dataset.category;
-      const shouldShow = filter === "all" || category === filter;
-      card.classList.toggle("hidden", !shouldShow);
-    });
-  });
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
 });
 
-// Dynamic footer copyright year
-const yearElement = document.getElementById("year");
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
+// Close menu when a link is clicked
+document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}));
+
+// Hide navbar on scroll down, show on scroll up
+let prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+    } else {
+        // Only hide if scrolled past the header
+        if (currentScrollPos > 80) {
+            document.getElementById("navbar").style.top = "-80px";
+        }
+    }
+    prevScrollpos = currentScrollPos;
 }
 
-// Profile image fallback (logs a warning if the image path is broken)
-const profileImage = document.querySelector(".profile-photo");
-
-if (profileImage) {
-  profileImage.addEventListener("error", () => {
-    console.warn("Profile image not found. Check that images/profile.png exists.");
-  });
-}
+// Automatically update footer year
+document.getElementById("year").textContent = new Date().getFullYear();

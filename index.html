@@ -3,395 +3,259 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Shreyas Rasam - AWS Cloud Engineer, Cloud Security and DevOps portfolio.">
-  <title>Shreyas Rasam | AWS Cloud Engineer</title>
+  <meta name="description" content="Shreyas Rasam - Cloud & DevOps Engineer Portfolio">
+  <title>Shreyas Rasam | Cloud & DevOps Engineer</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="navbar container">
-      <a class="logo" href="#home">SR<span>.</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo">&lt;Shreyas<span>/</span>&gt;</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About & Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link btn-outline">Contact Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero" id="home">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <p class="greeting">Hi, my name is</p>
+        <h1 class="name">Shreyas Rasam.</h1>
+        <h2 class="title">I build scalable cloud architectures & CI/CD pipelines.</h2>
+        <p class="summary">
+          I am a Cloud and DevOps Engineer based in Mumbai, specializing in AWS, Oracle Cloud, and infrastructure automation. From designing secure cloud environments to building full-stack web applications, I focus on practical, working solutions.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="images/Shreyas_Rasam_Cloud_DevOps_Resume.pdf" target="_blank" class="btn btn-secondary">Resume</a>
+        </div>
       </div>
-    </nav>
+      <div class="hero-image">
+        <div class="image-wrapper">
+          <img src="images/profile.png" alt="Shreyas Rasam" loading="lazy">
+        </div>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="hero section" id="home">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="status-dot"></span> AWS CLOUD • SECURITY • DEVOPS</p>
-          <h1>Building secure, scalable solutions in the <span>cloud.</span></h1>
-          <p class="hero-subtitle">
-            I'm Shreyas Rasam, an IT professional focused on AWS Cloud Engineering,
-            Cloud Security, infrastructure automation and DevOps.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#projects">Explore my projects</a>
-            <a class="button button-secondary" href="images/Shreyas_Rasam_Cloud_DevOps_Resume.pdf" download>Download resume ↓</a>
-          </div>
-          <div class="hero-links">
-            <a href="https://github.com/SSR139" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/shreyas-rasam-258213242/" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a href="mailto:Shreyas.rasam@outlook.com">Email ↗</a>
+  <!-- ABOUT & SKILLS SECTION -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">01. <span>About & Skills</span></h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>With dual certifications in AWS and OCI, I bridge the gap between cloud infrastructure operations and software development. I currently work at Orbit TechSol supporting AWS production environments, but in my free time, I build everything from e-commerce sites to family finance trackers.</p>
+          
+          <div class="certifications">
+            <a href="images/aws-cert.png" target="_blank"><img src="images/aws-cert.png" alt="AWS Solutions Architect"></a>
+            <a href="images/oracle-cert.png" target="_blank"><img src="images/oracle-cert.png" alt="OCI Architect"></a>
           </div>
         </div>
-
-        <div class="hero-visual">
-          <div class="photo-frame">
-            <img src="images/profile.png" alt="Shreyas Rasam" class="profile-photo" loading="lazy">
+        <div class="skills-wrapper">
+          <div class="skill-category">
+            <h3>Cloud & Infrastructure</h3>
+            <ul class="skill-list">
+              <li>AWS (EC2, S3, VPC, ECS, Fargate)</li>
+              <li>Oracle Cloud Infrastructure (OCI)</li>
+              <li>Docker & Kubernetes (OKE)</li>
+              <li>Terraform & CloudFormation</li>
+            </ul>
           </div>
-          <div class="photo-caption">
-            <span class="caption-line"></span>
-            <div>
-              <strong>Shreyas Rasam</strong>
-              <small>AWS Cloud Engineer</small>
-            </div>
+          <div class="skill-category">
+            <h3>DevOps & Development</h3>
+            <ul class="skill-list">
+              <li>CI/CD (Jenkins, GitHub Actions)</li>
+              <li>Linux Administration & Bash</li>
+              <li>Python & JavaScript</li>
+              <li>HTML & Tailwind CSS</li>
+            </ul>
           </div>
-          <div class="floating-chip chip-one">☁ AWS Cloud</div>
-          <div class="floating-chip chip-two">♧ Cloud Security</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="about">
-      <div class="container narrow">
-        <p class="eyebrow">01 / ABOUT ME</p>
-        <h2 class="section-title">Cloud technology with a <span>security-first mindset.</span></h2>
-        <p class="section-lead">
-          I work across technical support, cloud technologies and infrastructure operations.
-          My areas of focus include AWS services, Linux administration, access management,
-          troubleshooting, monitoring and automation.
-        </p>
-        <p class="body-copy">
-          I am continuously developing practical projects to strengthen my skills in
-          cloud architecture, infrastructure as code, CI/CD and cloud security.
-          I enjoy learning by building, documenting and improving real-world-style solutions.
-        </p>
+  <!-- EXPERIENCE SECTION -->
+  <section class="section" id="experience">
+    <div class="container">
+      <h2 class="section-title">02. <span>Experience</span></h2>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Cloud / DevOps Engineer - Technical Support</h3>
+            <h4>Orbit TechSol <span>| Mumbai, India</span></h4>
+            <span class="timeline-date">Nov 2025 - Present</span>
+            <ul>
+              <li>Support AWS cloud-hosted production environments, ensuring high availability and secure access.</li>
+              <li>Monitor infrastructure health and perform deep-dive log analysis to troubleshoot operational issues.</li>
+              <li>Validate and oversee CI/CD release deployments, minimizing downtime during application updates.</li>
+              <li>Manage Linux-based environments and automate routine administrative tasks using shell scripting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Senior Associate - Cloud Application Operations</h3>
+            <h4>SBI Life Insurance Ltd <span>| Mumbai, India</span></h4>
+            <span class="timeline-date">Jun 2023 - Nov 2025</span>
+            <ul>
+              <li>Supported enterprise application availability across AWS and Oracle Cloud Infrastructure (OCI).</li>
+              <li>Resolved incident tickets related to infrastructure performance and operational bottlenecks.</li>
+              <li>Maintained operational documentation and coordinated with cross-functional teams for rapid issue resolution.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section section-alt" id="skills">
-      <div class="container">
-        <p class="eyebrow">02 / TECHNICAL SKILLS</p>
-        <h2 class="section-title">Tools & technologies</h2>
-        <div class="skills-grid">
-          <article class="skill-card">
-            <div class="skill-icon">☁</div>
-            <h3>AWS & Cloud</h3>
-            <p>EC2 · VPC · S3 · IAM · ECS · Fargate · RDS · ELB · Route 53 · CloudFront</p>
-          </article>
-          <article class="skill-card">
-            <div class="skill-icon">⌘</div>
-            <h3>Infrastructure as Code</h3>
-            <p>Terraform · AWS CloudFormation · Infrastructure automation</p>
-          </article>
-          <article class="skill-card">
-            <div class="skill-icon">♧</div>
-            <h3>Cloud Security</h3>
-            <p>IAM · Least privilege · KMS · WAF · CloudTrail · GuardDuty · Security Groups</p>
-          </article>
-          <article class="skill-card">
-            <div class="skill-icon">⚙</div>
-            <h3>DevOps & Containers</h3>
-            <p>Docker · Kubernetes · Jenkins · GitHub · CI/CD · ECR · CodePipeline</p>
-          </article>
-          <article class="skill-card">
-            <div class="skill-icon">⌁</div>
-            <h3>Monitoring & Operations</h3>
-            <p>CloudWatch · Logs · Alerts · Incident response · Troubleshooting · SLA</p>
-          </article>
-          <article class="skill-card">
-            <div class="skill-icon">$_</div>
-            <h3>Systems & Scripting</h3>
-            <p>Linux · Bash · Python · AWS CLI · Git · Networking fundamentals</p>
-          </article>
+  <!-- PROJECTS SECTION -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">03. <span>Featured Projects</span></h2>
+      <div class="project-grid">
+
+        <!-- Web App: FreeBhajiwala -->
+        <div class="project-card">
+          <div class="project-content">
+            <p class="project-overline">Full-Stack Web App</p>
+            <h3 class="project-title">FreeBhajiwala E-Commerce</h3>
+            <p class="project-desc">A dynamic vegetable e-commerce web application featuring flash offers, an admin management dashboard, and a bilingual chatbot. Integrated with SheetDB API for lightweight order logging.</p>
+            <ul class="project-tech">
+              <li>HTML/JS</li>
+              <li>SheetDB</li>
+              <li>Chatbot Integration</li>
+            </ul>
+          </div>
         </div>
+
+        <!-- DevOps: CI/CD Pipeline -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="images/Automated CI-CD Pipeline.jpg" alt="CI/CD Architecture" loading="lazy">
+          </div>
+          <div class="project-content">
+            <p class="project-overline">DevOps Automation</p>
+            <h3 class="project-title">Automated CI/CD Pipeline</h3>
+            <p class="project-desc">Built a robust automated deployment pipeline for Node.js applications utilizing Jenkins, Docker, and AWS EC2 to streamline release cycles.</p>
+            <ul class="project-tech">
+              <li>Jenkins</li>
+              <li>Docker</li>
+              <li>AWS EC2</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Web App: Finance Tracker -->
+        <div class="project-card">
+          <div class="project-content">
+            <p class="project-overline">Python Web App</p>
+            <h3 class="project-title">Family Finance Tracker</h3>
+            <p class="project-desc">A private Streamlit-based web application featuring user authentication, custom thematic styling, and monthly statement export capabilities.</p>
+            <ul class="project-tech">
+              <li>Python</li>
+              <li>Streamlit</li>
+              <li>Data Analytics</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cloud Arch: Microservices -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="images/Containerized Microservices on ECS.jpg" alt="ECS Architecture" loading="lazy">
+          </div>
+          <div class="project-content">
+            <p class="project-overline">Cloud Architecture</p>
+            <h3 class="project-title">Containerized Microservices</h3>
+            <p class="project-desc">Implemented highly available container workloads on Amazon ECS with AWS Fargate, managing image repositories via ECR and monitoring via CloudWatch.</p>
+            <ul class="project-tech">
+              <li>AWS ECS</li>
+              <li>Fargate</li>
+              <li>CloudWatch</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Web App: Fitness -->
+        <div class="project-card">
+          <div class="project-content">
+            <p class="project-overline">Frontend Development</p>
+            <h3 class="project-title">Custom Fitness Portal</h3>
+            <p class="project-desc">A fitness web application interface designed with Tailwind CSS, featuring embedded workout databases for targeted training routines and personalized diet planning.</p>
+            <ul class="project-tech">
+              <li>HTML</li>
+              <li>Tailwind CSS</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cloud Arch: Network Security -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="images/Secure AWS Network Architecture.jpg" alt="Secure AWS Architecture" loading="lazy">
+          </div>
+          <div class="project-content">
+            <p class="project-overline">Cloud Security</p>
+            <h3 class="project-title">Secure Enterprise VPC</h3>
+            <p class="project-desc">Designed a scalable, highly available AWS network incorporating public/private subnets, Elastic Load Balancing, Auto Scaling, and strict IAM/Security Group policies.</p>
+            <ul class="project-tech">
+              <li>AWS VPC</li>
+              <li>ALB</li>
+              <li>IAM</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="experience">
-      <div class="container">
-        <p class="eyebrow">03 / PROFESSIONAL EXPERIENCE</p>
-        <h2 class="section-title">My career journey</h2>
-        <div class="timeline">
-          <article class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-top">
-                <div>
-                  <h3>Technical Support Engineer</h3>
-                  <p class="company">Orbit TechSol</p>
-                </div>
-                <span class="date">Nov 2025 – Present</span>
-              </div>
-              <ul>
-                <li>Support technical operations and troubleshoot application and infrastructure-related issues.</li>
-                <li>Work with Linux servers, SSH access and shell commands for operational investigation.</li>
-                <li>Review application logs and monitoring dashboards to identify and investigate incidents.</li>
-                <li>Support application deployments and coordinate troubleshooting across technical teams.</li>
-                <li>Handle user access, permissions and operational security controls as required.</li>
-                <li>Manage support tickets, incident updates and service-level commitments.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-top">
-                <div>
-                  <h3>Senior Associate</h3>
-                  <p class="company">SBI Life Insurance</p>
-                </div>
-                <span class="date">Jun 2023 – Nov 2025</span>
-              </div>
-              <ul>
-                <li>Supported business and operational processes in a service-focused environment.</li>
-                <li>Worked with internal systems, process documentation and issue resolution.</li>
-                <li>Coordinated with stakeholders to address queries and support timely resolution.</li>
-                <li>Maintained process discipline, documentation and service delivery standards.</li>
-              </ul>
-            </div>
-          </article>
-        </div>
+  <!-- CONTACT SECTION -->
+  <section class="section" id="contact">
+    <div class="container contact-container">
+      <h2 class="section-title">04. <span>What's Next?</span></h2>
+      <h3 class="contact-heading">Get In Touch</h3>
+      <p class="contact-text">Whether you have a question about my AWS deployments, want to discuss a DevOps role, or just want to say hi, my inbox is always open.</p>
+      <div class="contact-links">
+        <a href="mailto:Shreyas.rasam@outlook.com" class="btn btn-primary">Say Hello</a>
+        <a href="tel:+918108877577" class="btn btn-outline">Call Me</a>
       </div>
-    </section>
-
-    <section class="section section-alt" id="projects">
-      <div class="container">
-        <p class="eyebrow">04 / PORTFOLIO</p>
-        <h2 class="section-title">10 cloud & security projects</h2>
-        <p class="section-lead">
-          A practical project roadmap covering cloud architecture, automation,
-          containerization, monitoring and security engineering.
-        </p>
-
-        <div class="project-filter" role="group" aria-label="Filter projects">
-          <button class="filter-btn active" data-filter="all">All projects</button>
-          <button class="filter-btn" data-filter="cloud">AWS Cloud</button>
-          <button class="filter-btn" data-filter="security">Cloud Security</button>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <article class="project-card" data-category="cloud">
-            <div class="project-image-container">
-              <img src="images/Enterprise AWS Cloud Architecture.jpg" alt="Enterprise AWS Cloud Architecture" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>01 · AWS CLOUD</span><span class="project-status">Deployed</span></div>
-              <h3>Enterprise AWS Cloud Architecture</h3>
-              <p>Design a highly available multi-tier AWS architecture using VPC, public/private subnets, ALB, EC2 or ECS and multi-AZ deployment.</p>
-              <div class="tags"><span>AWS</span><span>VPC</span><span>ALB</span><span>Terraform</span></div>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="project-card" data-category="cloud">
-            <div class="project-image-container">
-              <img src="images/Automated CI-CD Pipeline.jpg" alt="Automated CI/CD Pipeline" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>02 · AWS CLOUD</span><span class="project-status">Deployed</span></div>
-              <h3>Automated CI/CD Pipeline</h3>
-              <p>Create an automated build, test and deployment workflow using GitHub, Jenkins and AWS infrastructure.</p>
-              <div class="tags"><span>Jenkins</span><span>GitHub</span><span>EC2</span><span>Docker</span></div>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="project-card" data-category="cloud">
-            <div class="project-image-container">
-              <img src="images/Containerized Microservices on ECS.jpg" alt="Containerized Microservices on ECS" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>03 · AWS CLOUD</span><span class="project-status">Deployed</span></div>
-              <h3>Containerized Microservices on ECS</h3>
-              <p>Package a sample application with Docker, publish images to ECR and deploy services on ECS Fargate.</p>
-              <div class="tags"><span>Docker</span><span>ECR</span><span>Fargate</span><span>CloudWatch</span></div>
-            </div>
-          </article>
-
-          <!-- Project 4 -->
-          <article class="project-card" data-category="cloud">
-            <div class="project-image-container">
-              <img src="images/Serverless Application Platform.jpg" alt="Serverless Application Platform" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>04 · AWS CLOUD</span><span class="project-status">Deployed</span></div>
-              <h3>Serverless Application Platform</h3>
-              <p>Build an event-driven application using API Gateway, AWS Lambda, DynamoDB and CloudWatch.</p>
-              <div class="tags"><span>Lambda</span><span>API Gateway</span><span>DynamoDB</span></div>
-            </div>
-          </article>
-
-          <!-- Project 5 -->
-          <article class="project-card" data-category="cloud">
-            <div class="project-image-container">
-              <img src="images/AWS Backup & Disaster Recovery.jpg" alt="AWS Backup & Disaster Recovery" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>05 · AWS CLOUD</span><span class="project-status">Deployed</span></div>
-              <h3>AWS Backup & Disaster Recovery</h3>
-              <p>Develop a backup and recovery design using S3 versioning, lifecycle policies, AWS Backup and recovery testing.</p>
-              <div class="tags"><span>S3</span><span>AWS Backup</span><span>DR</span><span>IAM</span></div>
-            </div>
-          </article>
-
-          <!-- Project 6 -->
-          <article class="project-card" data-category="security">
-            <div class="project-image-container">
-              <img src="images/AWS Security Monitoring & Threat Detection.jpg" alt="AWS Security Monitoring & Threat Detection" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>06 · CLOUD SECURITY</span><span class="project-status">Deployed</span></div>
-              <h3>AWS Security Monitoring & Threat Detection</h3>
-              <p>Configure CloudTrail, GuardDuty and CloudWatch alerts to detect and investigate suspicious AWS activity.</p>
-              <div class="tags"><span>GuardDuty</span><span>CloudTrail</span><span>CloudWatch</span></div>
-            </div>
-          </article>
-
-          <!-- Project 7 -->
-          <article class="project-card" data-category="security">
-            <div class="project-image-container">
-              <img src="images/IAM Least-Privilege Security Lab.jpg" alt="IAM Least-Privilege Security Lab" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>07 · CLOUD SECURITY</span><span class="project-status">Deployed</span></div>
-              <h3>IAM Least-Privilege Security Lab</h3>
-              <p>Implement IAM roles and policies, remove unnecessary permissions and test secure EC2-to-S3 access.</p>
-              <div class="tags"><span>IAM</span><span>Roles</span><span>Policies</span><span>S3</span></div>
-            </div>
-          </article>
-
-          <!-- Project 8 -->
-          <article class="project-card" data-category="security">
-            <div class="project-image-container">
-              <img src="images/Secure AWS Network Architecture.jpg" alt="Secure AWS Network Architecture" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>08 · CLOUD SECURITY</span><span class="project-status">Deployed</span></div>
-              <h3>Secure AWS Network Architecture</h3>
-              <p>Build segmented VPC networking with private subnets, security groups, network ACLs and controlled outbound access.</p>
-              <div class="tags"><span>VPC</span><span>Security Groups</span><span>NACL</span><span>NAT</span></div>
-            </div>
-          </article>
-
-          <!-- Project 9 -->
-          <article class="project-card" data-category="security">
-            <div class="project-image-container">
-              <img src="images/AWS Data Encryption & Key Management.jpg" alt="AWS Data Encryption & Key Management" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>09 · CLOUD SECURITY</span><span class="project-status">Deployed</span></div>
-              <h3>AWS Data Encryption & Key Management</h3>
-              <p>Secure stored data with KMS encryption, S3 bucket policies, key permissions and encryption monitoring.</p>
-              <div class="tags"><span>KMS</span><span>S3</span><span>Encryption</span><span>IAM</span></div>
-            </div>
-          </article>
-
-          <!-- Project 10 -->
-          <article class="project-card" data-category="security">
-            <div class="project-image-container">
-              <img src="images/AWS Compliance & Security Audit.jpg" alt="AWS Compliance & Security Audit" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-meta"><span>10 · CLOUD SECURITY</span><span class="project-status">Deployed</span></div>
-              <h3>AWS Compliance & Security Audit</h3>
-              <p>Assess an AWS lab environment against security best practices using AWS Config, Security Hub and audit evidence.</p>
-              <div class="tags"><span>Security Hub</span><span>AWS Config</span><span>Audit</span></div>
-            </div>
-          </article>
-        </div>
+      <div class="socials">
+        <a href="https://github.com/SSR139" target="_blank">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/shreyas-rasam-258213242/" target="_blank">LinkedIn ↗</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="education">
-      <div class="container">
-        <p class="eyebrow">05 / EDUCATION</p>
-        <h2 class="section-title">Academic background</h2>
-        <div class="education-grid">
-          <article class="education-card">
-            <span class="education-year">2020 – 2023</span>
-            <h3>B.E. Electronics & Telecommunication</h3>
-            <p>Vidyalankar Institute of Technology, Mumbai</p>
-            <strong>CGPA: 8.87 / 10</strong>
-          </article>
-          <article class="education-card">
-            <span class="education-year">2017 – 2020</span>
-            <h3>Diploma in Electronics Engineering</h3>
-            <p>Government Polytechnic, Mumbai</p>
-            <strong>86%</strong>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="certifications">
-      <div class="container">
-        <p class="eyebrow">06 / CERTIFICATIONS</p>
-        <h2 class="section-title">Certifications</h2>
-        <div class="cert-grid">
-          <article class="cert-card">
-            <a href="images/aws-cert.png" target="_blank" title="Click to view full AWS certificate">
-              <img src="images/aws-cert.png" alt="AWS Certification Badge" class="cert-badge">
-            </a>
-            <div>
-              <h3>AWS Certified Solutions Architect – Associate</h3>
-              <p>Amazon Web Services</p>
-              <small>Credential earned</small>
-            </div>
-          </article>
-          <article class="cert-card">
-            <a href="images/oracle-cert.png" target="_blank" title="Click to view full Oracle certificate">
-              <img src="images/oracle-cert.png" alt="Oracle Certification Badge" class="cert-badge">
-            </a>
-            <div>
-              <h3>Oracle Cloud Infrastructure Architect Associate</h3>
-              <p>Oracle</p>
-              <small>Credential earned</small>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact-section" id="contact">
-      <div class="container contact-grid">
-        <div>
-          <p class="eyebrow">07 / GET IN TOUCH</p>
-          <h2 class="section-title">Let's build something <span>secure and scalable.</span></h2>
-          <p class="section-lead">I'm interested in opportunities in AWS Cloud Engineering, Cloud Security and DevOps.</p>
-        </div>
-        <div class="contact-card">
-          <a href="mailto:Shreyas.rasam@outlook.com"><span>Email</span><strong>Shreyas.rasam@outlook.com ↗</strong></a>
-          <a href="tel:+918108877577"><span>Phone</span><strong>+91 8108877577 ↗</strong></a>
-          <a href="https://www.linkedin.com/in/shreyas-rasam-258213242/" target="_blank" rel="noopener"><span>LinkedIn</span><strong>Connect with me ↗</strong></a>
-          <a href="https://github.com/SSR139" target="_blank" rel="noopener"><span>GitHub</span><strong>Explore my repositories ↗</strong></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <a class="logo" href="#home">SR<span>.</span></a>
-      <p>© <span id="year"></span> Shreyas Rasam. Built with purpose.</p>
-      <a href="#home">Back to top ↑</a>
+  <footer>
+    <div class="container">
+      <p>Designed & Built by Shreyas Rasam © <span id="year"></span></p>
     </div>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
